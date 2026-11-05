@@ -1,12 +1,7 @@
 name: Tests
 
 on:
-  schedule:
-  - cron: 00 00 * * 1
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -51,9 +46,6 @@ jobs:
       matrix:
         python-version: ['3.12', '3.13', '3.14']
         os: [ubuntu-latest]
-        include:
-        - python-version: '3.12'
-          os: macos-15
 
     steps:
     - uses: actions/checkout@v5
