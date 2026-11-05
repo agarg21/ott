@@ -41,7 +41,7 @@ jobs:
 
     - name: Run tests
       continue-on-error: ${{ matrix.jax-version == 'jax-latest' }}
-      run: python -m pytest -m fast -n auto --strict-rng --memray -vv
+      run: python -m pytest -m fast -n logical --strict-rng --memray -vv
 
   tests:
     name: Python ${{ matrix.python-version }} on ${{ matrix.os }}
@@ -70,7 +70,7 @@ jobs:
 
     - name: Run tests
       run: |
-        python -m pytest -n auto --strict-rng --memray -vv \
+        python -m pytest -n logical --strict-rng --memray -vv \
           --cov=ott --no-cov-on-fail --cov-report=xml \
           --cov-report=term-missing:skip-covered
 
